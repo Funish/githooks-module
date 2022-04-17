@@ -1,0 +1,66 @@
+{
+  "name": "@funish/githooks",
+  "version": "0.0.0",
+  "description": "Programmatically create git hooks, powered by Funish.",
+  "main": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "hooks": "bin/hooks.mjs"
+  },
+  "scripts": {
+    "prepublish": "unbuild",
+    "lint:js": "eslint --ext \".js,.mjs,.ts\" --ignore-path .gitignore",
+    "lint:prettier": "prettier --check . --ignore-path .gitignore",
+    "lint": "yarn lint:js && yarn lint:prettier",
+    "lintfix": "prettier --write --list-different . --ignore-path .gitignore && yarn lint:js --fix"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts}": "eslint --cache",
+    "*.**": "prettier --check --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Funish/githooks-module.git"
+  },
+  "keywords": [
+    "git",
+    "hooks",
+    "husky"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "contributors": [
+    {
+      "name": "Demo Macro",
+      "email": "abc@imst.xyz",
+      "url": "https://imst.xyz/"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Funish/githooks-module/issues"
+  },
+  "homepage": "https://github.com/Funish/githooks-module#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@funish/eslint-config": "^0.0.0",
+    "@types/node": "^17.0.23",
+    "@types/parse-git-config": "^3.0.1",
+    "eslint": "^8.13.0",
+    "lint-staged": "^12.3.8",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3",
+    "unbuild": "^0.7.2"
+  },
+  "dependencies": {
+    "cac": "^6.7.12",
+    "consola": "^2.15.3",
+    "parse-git-config": "^3.0.0"
+  }
+}
