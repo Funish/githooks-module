@@ -28,28 +28,16 @@ $ pnpm add -D @funish/githooks
 
 ```bash
 # Install Git hooks.
-$ yarn hooks install
+$ pnpm hooks install -S
 
 # Initialize Git hooks
-$ yarn hooks init pre-commit [yarn lint]
+$ pnpm hooks init pre-commit [pnpm lint]
 
 # Add a script to an existing git hook.
-$ yarn hooks add pre-commit [yarn test]
+$ pnpm hooks add pre-commit [pnpm test]
 
 # Uninstall Git hooks.
-$ yarn hooks uninstall
-```
-
-### Recommend
-
-Edit your `package.json` file and add the following script.
-
-```json
-{
-  "scripts": {
-    "postinstall": "hooks install"
-  }
-}
+$ pnpm hooks uninstall
 ```
 
 ### CLI

@@ -15,8 +15,12 @@ cli.on("command:*", () => {
 cli
   .command("install [dir]", "Install Git hooks.")
   .alias("i")
-  .action((dir) => {
-    install(dir);
+  .option(
+    "-S, --save-script [script]",
+    "Git hooks will be called during the post-install phase of the lifecycle."
+  )
+  .action((dir, options) => {
+    install(dir, options.saveScript);
   });
 
 cli
