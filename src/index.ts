@@ -52,8 +52,6 @@ export function install(dir = ".hooks", saveScript: boolean | string) {
         : execSync(`npm set-script ${saveScript} "hooks install ${dir}"`);
     }
 
-    consola.log(saveScript);
-
     // Create a folder for git hooks.
     mkdirSync(dir, { recursive: true });
 
