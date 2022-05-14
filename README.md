@@ -1,4 +1,4 @@
-# Funish Lint Toolchain
+# Funish Hooks
 
 ![GitHub](https://img.shields.io/github/license/funish/hooks-module)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
