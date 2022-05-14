@@ -1,7 +1,7 @@
 import cac from "cac";
 import consola from "consola";
 import { readFileSync } from "fs";
-import { add, hooksName, init, install, uninstall } from "./index";
+import { add, hooksName, init, install, migrate, uninstall } from "./index";
 
 const cli = cac("hooks");
 const { version } = JSON.parse(readFileSync("package.json", "utf8"));
@@ -43,6 +43,12 @@ cli
   .alias("un")
   .action(() => {
     uninstall();
+  });
+
+cli
+  .command("migrate", "Migrating from husky to @funish/githooks.")
+  .action(() => {
+    migrate();
   });
 
 // Display help message when `-h` or `--help` appears

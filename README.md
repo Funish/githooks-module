@@ -1,70 +1,13 @@
-# @funish/githooks
+# Funish Lint Toolchain
 
-![npm version](https://img.shields.io/npm/v/@funish/githooks)
-![npm downloads](https://img.shields.io/npm/dw/@funish/githooks)
-![npm license](https://img.shields.io/npm/l/@funish/githooks)
+![GitHub](https://img.shields.io/github/license/funish/hooks-module)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
 
-> Programmatically create git hooks, powered by Funish.
+> Programmatically create hooks, powered by Funish.
 
-Inspired by [husky](https://github.com/typicode/husky) and with an extremely similar implementation, but modified and supplemented with some possible details.
+## Packages
 
-## Getting started
-
-```bash
-# npm
-$ npm install -D @funish/githooks
-
-# yarn
-$ yarn add -D @funish/githooks
-
-# pnpm
-$ pnpm add -D @funish/githooks
-```
-
-## Usage
-
-### Example
-
-```bash
-# Install Git hooks.
-$ pnpm hooks install -S
-
-# Initialize Git hooks
-$ pnpm hooks init pre-commit [pnpm lint]
-
-# Add a script to an existing git hook.
-$ pnpm hooks add pre-commit [pnpm test]
-
-# Uninstall Git hooks.
-$ pnpm hooks uninstall
-```
-
-### CLI
-
-```bash
-$ hooks -h
-hooks/0.0.0
-
-Usage:
-  $ hooks <command> [options]
-
-Commands:
-  install [dir]          Install Git hooks.
-  init <hooks> [script]  Initialize Git hooks, you can see more details at https://git-scm.com/docs/githooks.
-  add <hooks> <script>   Add a script to an existing git hook.
-  uninstall              Uninstall Git hooks.
-
-For more info, run any command with the `--help` flag:
-  $ hooks install --help
-  $ hooks init --help
-  $ hooks add --help
-  $ hooks uninstall --help
-
-Options:
-  -h, --help     Display this message
-  -v, --version  Display version number
-```
+- [@funish/githooks](./packages/githooks/README.md)
 
 ## Credits
 

@@ -1,7 +1,14 @@
 import { execSync, spawnSync, SpawnSyncReturns } from "child_process";
 import parse from "parse-git-config";
 import consola from "consola";
-import { appendFileSync, existsSync, mkdirSync, writeFileSync } from "fs";
+import {
+  appendFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  renameSync,
+  writeFileSync,
+} from "fs";
 
 // https://git-scm.com/docs/githooks
 const hooksArray = [
@@ -71,7 +78,7 @@ export function init(hooks: hooksName, script?: string) {
       );
     } else if (!existsSync(hooksPath)) {
       consola.error(
-        `${hooksPath} directory doesn't exist (try running hooks install [dir]).`
+        `The ${hooksPath} directory does not exist (try running hooks install [dir]).`
       );
     } else if (!hooksArray.includes(hooks)) {
       consola.error(
@@ -103,15 +110,15 @@ export function add(hooks: hooksName, script: string) {
       );
     } else if (!existsSync(hooksPath)) {
       consola.error(
-        `${hooksPath} directory doesn't exist (try running hooks install [dir]).`
+        `The ${hooksPath} directory does not exist (try running hooks install [dir]).`
       );
     } else if (!existsSync(`${hooksPath}/${hooks}`)) {
       consola.error(
-        `Git hooks are not initialized, ${hooksPath} directory doesn't exist (try running hooks init ${hooks} [command]).`
+        `Git hooks are not initialized, ${hooksPath} directory doesn't exist (try running hooks init ${hooks} [script]).`
       );
     } else {
       appendFileSync(`${hooksPath}/${hooks}`, `\n${script}`);
-      consola.success("Git hooks add command successfully.");
+      consola.success("Git hooks add script successfully.");
     }
   } catch (error) {
     consola.error(error);
@@ -123,6 +130,29 @@ export function uninstall() {
     // Reset the git hooks directory to its default value.
     git(["config", "--unset", "core.hooksPath"]);
     consola.success("Git hooks are uninstalled.");
+  } catch (error) {
+    consola.error(error);
+  }
+}
+
+export function migrate() {
+  const hooksPath = parse.sync().core.hooksPath;
+
+  try {
+    if (!hooksPath) {
+      consola.error(
+        `Git hooks are not installed (try running hooks install [dir]).`
+      );
+    } else if (!existsSync(hooksPath) || readdirSync(hooksPath).length === 0) {
+      renameSync(".husky", hooksPath);
+      consola.success(
+        "Migration is complete, after that please deal with any conflicts manually."
+      );
+    } else {
+      consola.error(
+        `The ${hooksPath} directory already exists, please try to migrate it manually.`
+      );
+    }
   } catch (error) {
     consola.error(error);
   }

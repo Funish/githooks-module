@@ -1,0 +1,50 @@
+{
+  "name": "@funish/githooks",
+  "version": "0.0.2-1",
+  "description": "Programmatically create git hooks, powered by Funish.",
+  "main": "dist/index.mjs",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "hooks": "bin/hooks.mjs"
+  },
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts}": "eslint --cache",
+    "*.**": "prettier --check --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Funish/hooks-module.git"
+  },
+  "keywords": [
+    "git",
+    "hooks",
+    "husky"
+  ],
+  "author": {
+    "name": "Funish",
+    "email": "official@funish.net",
+    "url": "https://funish.net/"
+  },
+  "contributors": [
+    {
+      "name": "Demo Macro",
+      "email": "abc@imst.xyz",
+      "url": "https://imst.xyz/"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Funish/hooks-module/issues"
+  },
+  "homepage": "https://github.com/Funish/hooks-module#readme",
+  "dependencies": {
+    "cac": "^6.7.12",
+    "consola": "^2.15.3",
+    "parse-git-config": "^3.0.0"
+  }
+}

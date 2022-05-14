@@ -1,21 +1,15 @@
 {
-  "name": "@funish/githooks",
-  "version": "0.0.2-0",
-  "description": "Programmatically create git hooks, powered by Funish.",
-  "main": "dist/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "bin": {
-    "hooks": "bin/hooks.mjs"
-  },
+  "name": "@funish/hooks-module",
+  "version": "0.0.0",
+  "description": "Programmatically create hooks, powered by Funish.",
+  "private": true,
   "scripts": {
+    "build": "pnpm -r prepack",
     "lint:js": "eslint --ext \".js,.mjs,.ts\" --ignore-path .gitignore",
     "lint:prettier": "prettier --check . --ignore-path .gitignore",
     "lint": "pnpm lint:js && pnpm lint:prettier",
     "lintfix": "prettier --write --list-different . --ignore-path .gitignore && pnpm lint:js --fix",
-    "postinstall": "hooks install",
-    "prepack": "unbuild"
+    "postinstall": "hooks install"
   },
   "lint-staged": {
     "*.{js,mjs,ts}": "eslint --cache",
@@ -23,12 +17,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Funish/githooks-module.git"
+    "url": "git+https://github.com/Funish/hooks-module.git"
   },
   "keywords": [
-    "git",
-    "hooks",
-    "husky"
+    "hooks"
   ],
   "author": {
     "name": "Funish",
@@ -44,13 +36,14 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Funish/githooks-module/issues"
+    "url": "https://github.com/Funish/hooks-module/issues"
   },
-  "homepage": "https://github.com/Funish/githooks-module#readme",
+  "homepage": "https://github.com/Funish/hooks-module#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
     "@funish/eslint-config": "0.0.1-0",
+    "@funish/githooks": "workspace:*",
     "@types/node": "^17.0.23",
     "@types/parse-git-config": "^3.0.1",
     "eslint": "^8.13.0",
@@ -58,10 +51,5 @@
     "prettier": "^2.6.2",
     "typescript": "^4.6.3",
     "unbuild": "^0.7.2"
-  },
-  "dependencies": {
-    "cac": "^6.7.12",
-    "consola": "^2.15.3",
-    "parse-git-config": "^3.0.0"
   }
 }
