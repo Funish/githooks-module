@@ -9,7 +9,7 @@
     "lint:prettier": "prettier --check . --ignore-path .gitignore",
     "lint": "pnpm lint:js && pnpm lint:prettier",
     "lintfix": "prettier --write --list-different . --ignore-path .gitignore && pnpm lint:js --fix",
-    "postinstall": "hooks install"
+    "postinstall": "githooks install"
   },
   "lint-staged": {
     "*.{js,mjs,ts}": "eslint --cache",
