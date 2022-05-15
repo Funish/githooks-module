@@ -47,14 +47,14 @@ export type hooksName = typeof hooksArray[number];
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>
   spawnSync("git", args, { stdio: "inherit" });
 
-export function install(dir = ".hooks", saveScript: boolean | string) {
+export function install(dir = ".githooks", saveScript: boolean | string) {
   try {
     // Modify the git hooks directory.
     git(["config", "core.hooksPath", dir]);
 
     if (saveScript) {
       typeof saveScript == "string" ? saveScript : (saveScript = "postinstall");
-      dir == ".hooks"
+      dir == ".githooks"
         ? execSync(`npm set-script ${saveScript} "hooks install"`)
         : execSync(`npm set-script ${saveScript} "hooks install ${dir}"`);
     }
