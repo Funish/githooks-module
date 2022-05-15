@@ -12,10 +12,6 @@
   "scripts": {
     "prepack": "unbuild"
   },
-  "lint-staged": {
-    "*.{js,mjs,ts}": "eslint --cache",
-    "*.**": "prettier --check --ignore-unknown"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Funish/hooks-module.git"
