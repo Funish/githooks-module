@@ -74,11 +74,11 @@ export function init(hooks: hooksName, script?: string) {
   try {
     if (!hooksPath) {
       consola.error(
-        `Git hooks are not installed (try running hooks install [dir]).`
+        `Git hooks are not installed (try running githooks install [dir]).`
       );
     } else if (!existsSync(hooksPath)) {
       consola.error(
-        `The ${hooksPath} directory does not exist (try running hooks install [dir]).`
+        `The ${hooksPath} directory does not exist (try running githooks install [dir]).`
       );
     } else if (!hooksArray.includes(hooks)) {
       consola.error(
@@ -106,15 +106,15 @@ export function add(hooks: hooksName, script: string) {
   try {
     if (!hooksPath) {
       consola.error(
-        `Git hooks are not installed (try running hooks install [dir]).`
+        `Git hooks are not installed (try running githooks install [dir]).`
       );
     } else if (!existsSync(hooksPath)) {
       consola.error(
-        `The ${hooksPath} directory does not exist (try running hooks install [dir]).`
+        `The ${hooksPath} directory does not exist (try running githooks install [dir]).`
       );
     } else if (!existsSync(`${hooksPath}/${hooks}`)) {
       consola.error(
-        `Git hooks are not initialized, ${hooksPath} directory doesn't exist (try running hooks init ${hooks} [script]).`
+        `Git hooks are not initialized, ${hooksPath} directory doesn't exist (try running githooks init ${hooks} [script]).`
       );
     } else {
       appendFileSync(`${hooksPath}/${hooks}`, `\n${script}`);
@@ -141,7 +141,7 @@ export function migrate() {
   try {
     if (!hooksPath) {
       consola.error(
-        `Git hooks are not installed (try running hooks install [dir]).`
+        `Git hooks are not installed (try running githooks install [dir]).`
       );
     } else if (!existsSync(hooksPath) || readdirSync(hooksPath).length === 0) {
       renameSync(".husky", hooksPath);

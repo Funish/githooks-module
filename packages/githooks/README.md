@@ -28,27 +28,27 @@ $ pnpm add -D @funish/githooks
 
 ```bash
 # Install Git hooks during the post-installation phase of the lifecycle.
-# Or you can use `pnpm hooks install -S prepare`.
-$ pnpm hooks install -S
+# Or you can use `pnpm githooks install -S prepare`.
+$ pnpm githooks install -S
 
 # Initialize Git hooks
-$ pnpm hooks init pre-commit [pnpm lint-staged]
+$ pnpm githooks init pre-commit [pnpm lint-staged]
 
 # Add a script to an existing git hook.
-$ pnpm hooks add pre-commit <script>
+$ pnpm githooks add pre-commit <script>
 
 # Uninstall Git hooks.
-$ pnpm hooks uninstall
+$ pnpm githooks uninstall
 ```
 
 ### CLI
 
 ```bash
-$ hooks -h
-hooks/0.0.0
+$ githooks -h
+githooks/0.0.0
 
 Usage:
-  $ hooks <command> [options]
+  $ githooks <command> [options]
 
 Commands:
   install [dir]          Install Git hooks.
@@ -58,11 +58,11 @@ Commands:
   migrate                Migrating from husky to @funish/githooks.
 
 For more info, run any command with the `--help` flag:
-  $ hooks install --help
-  $ hooks init --help
-  $ hooks add --help
-  $ hooks uninstall --help
-  $ hooks migrate --help
+  $ githooks install --help
+  $ githooks init --help
+  $ githooks add --help
+  $ githooks uninstall --help
+  $ githooks migrate --help
 
 Options:
   -h, --help     Display this message

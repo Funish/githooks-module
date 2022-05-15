@@ -3,7 +3,7 @@ import consola from "consola";
 import { readFileSync } from "fs";
 import { add, hooksName, init, install, migrate, uninstall } from "./index";
 
-const cli = cac("hooks");
+const cli = cac("githooks");
 const { version } = JSON.parse(readFileSync("package.json", "utf8"));
 
 // Listen to unknown commands

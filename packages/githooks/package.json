@@ -7,7 +7,7 @@
     "dist"
   ],
   "bin": {
-    "hooks": "bin/hooks.mjs"
+    "githooks": "bin/githooks.mjs"
   },
   "scripts": {
     "prepack": "unbuild"
