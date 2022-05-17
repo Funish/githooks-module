@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/Funish/hooks-module#readme",
   "devDependencies": {
-    "@commitlint/cli": "^16.2.3",
+    "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^16.2.1",
     "@funish/eslint-config": "0.0.1-0",
     "@funish/githooks": "workspace:*",
