@@ -1,4 +1,4 @@
-import { execSync, spawnSync, SpawnSyncReturns } from "child_process";
+import { spawnSync, SpawnSyncReturns } from "child_process";
 import parse from "parse-git-config";
 import consola from "consola";
 import {
@@ -46,17 +46,20 @@ export type hooksName = typeof hooksArray[number];
 
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>
   spawnSync("git", args, { stdio: "inherit" });
+const npm = (args: string[]): SpawnSyncReturns<Buffer> =>
+  spawnSync("npm", args, { stdio: "inherit" });
 
 export function install(dir = ".githooks", saveScript: boolean | string) {
   try {
+    git(["init"]);
     // Modify the git hooks directory.
     git(["config", "core.hooksPath", dir]);
 
     if (saveScript) {
       typeof saveScript == "string" ? saveScript : (saveScript = "postinstall");
       dir == ".githooks"
-        ? execSync(`npm set-script ${saveScript} "hooks install"`)
-        : execSync(`npm set-script ${saveScript} "hooks install ${dir}"`);
+        ? npm(["set-script", `${saveScript}`, "hooks install"])
+        : npm(["set-script", `${saveScript}`, `hooks install ${dir}`]);
     }
 
     // Create a folder for git hooks.
