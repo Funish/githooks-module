@@ -1,15 +1,12 @@
 {
-  "name": "@funish/githooks",
-  "version": "0.0.2-5",
-  "description": "Programmatically create git hooks, powered by Funish.",
+  "name": "@funish/githooks-config",
+  "version": "0.0.0",
+  "description": "Shared githooks configuration, powered by Funish.",
   "main": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "bin": {
-    "githooks": "bin/githooks.mjs"
-  },
   "scripts": {
     "prepack": "unbuild"
   },
@@ -38,15 +35,5 @@
   "bugs": {
     "url": "https://github.com/Funish/hooks-module/issues"
   },
-  "homepage": "https://github.com/Funish/hooks-module#readme",
-  "dependencies": {
-    "@npmcli/package-json": "^2.0.0",
-    "c12": "^0.2.7",
-    "cac": "^6.7.12",
-    "consola": "^2.15.3",
-    "parse-git-config": "^3.0.0"
-  },
-  "devDependencies": {
-    "@types/npmcli__package-json": "^2.0.0"
-  }
+  "homepage": "https://github.com/Funish/hooks-module#readme"
 }

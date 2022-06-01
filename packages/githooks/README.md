@@ -24,43 +24,57 @@ $ pnpm add -D @funish/githooks
 
 ## Usage
 
-### Example
+### Recommend
+
+For unified processes, we prefer to use configuration files to manage certain simple commands. This method is only suitable for fixed configuration management and `githooks install` should be re-run after making changes to the configuration file.
+
+```ts
+import { defineGithooksConfig } from "@funish/githooks";
+
+export default defineGithooksConfig({
+  scripts: {
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit $1",
+  },
+});
+```
+
+### Husky Like
+
+We can also use it in a similar way to Husky, except that the default folder will be `.githooks`.
 
 ```bash
 # Install Git hooks during the post-installation phase of the lifecycle.
 # Or you can use `pnpm githooks install -S prepare`.
 $ pnpm githooks install -S
 
-# Initialize Git hooks
-$ pnpm githooks init pre-commit [pnpm lint-staged]
-
-# Add a script to an existing git hook.
-$ pnpm githooks add pre-commit <script>
+# Set up Git hooks.
+$ pnpm githooks setup <hooks> [script]
 
 # Uninstall Git hooks.
 $ pnpm githooks uninstall
+
+# Migrating from husky to @funish/githooks.
+$ pnpm githooks migrate
 ```
 
 ### CLI
 
 ```bash
 $ githooks -h
-githooks/0.0.0
 
 Usage:
   $ githooks <command> [options]
 
 Commands:
-  install [dir]          Install Git hooks.
-  init <hooks> [script]  Initialize Git hooks, you can see more details at https://git-scm.com/docs/githooks.
-  add <hooks> <script>   Add a script to an existing git hook.
-  uninstall              Uninstall Git hooks.
-  migrate                Migrating from husky to @funish/githooks.
+  install [path]          Install Git hooks.
+  setup <hooks> [script]  Set up Git hooks.
+  uninstall               Uninstall Git hooks.
+  migrate                 Migrating from husky to @funish/githooks.
 
 For more info, run any command with the `--help` flag:
   $ githooks install --help
-  $ githooks init --help
-  $ githooks add --help
+  $ githooks setup --help
   $ githooks uninstall --help
   $ githooks migrate --help
 
