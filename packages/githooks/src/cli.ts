@@ -4,7 +4,8 @@ import { readFileSync } from "fs";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { GithooksName } from "./config";
-import * as runCommand from "./hooks";
+import { githooksInstall, githooksSetup, githooksUninstall } from "./githooks";
+import { githooksMigrateFromHusky } from "./githooks";
 
 const cli = cac("githooks");
 const moduleDir = fileURLToPath(new URL("../", import.meta.url));
@@ -26,26 +27,26 @@ cli
     "Git hooks will be called during the post-install phase of the lifecycle."
   )
   .action((path, options) => {
-    runCommand.githooksInstall(path, options.saveScript);
+    githooksInstall(path, options.saveScript);
   });
 
 cli
   .command("setup <hooks> [script]", "Set up Git hooks.")
   .action((hooks: GithooksName, script) => {
-    runCommand.githooksSetup(hooks, script);
+    githooksSetup(hooks, script);
   });
 
 cli
   .command("uninstall", "Uninstall Git hooks.")
   .alias("un")
   .action(() => {
-    runCommand.githooksUninstall();
+    githooksUninstall();
   });
 
 cli
   .command("migrate", "Migrating from husky to @funish/githooks.")
   .action(() => {
-    runCommand.githooksMigrateFromHusky();
+    githooksMigrateFromHusky();
   });
 
 // Display help message when `-h` or `--help` appears

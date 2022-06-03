@@ -1,7 +1,7 @@
 {
-  "name": "@funish/hooks-module",
+  "name": "@funish/githooks-module",
   "version": "0.0.0",
-  "description": "Programmatically create hooks, powered by Funish.",
+  "description": "Programmatically create git hooks, powered by Funish.",
   "private": true,
   "scripts": {
     "build": "pnpm -r prepack",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Funish/hooks-module.git"
+    "url": "git+https://github.com/Funish/githooks-module.git"
   },
   "keywords": [
     "hooks"
@@ -36,9 +36,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Funish/hooks-module/issues"
+    "url": "https://github.com/Funish/githooks-module/issues"
   },
-  "homepage": "https://github.com/Funish/hooks-module#readme",
+  "homepage": "https://github.com/Funish/githooks-module#readme",
   "devDependencies": {
     "@commitlint/cli": "16.3.0",
     "@commitlint/config-conventional": "16.2.4",

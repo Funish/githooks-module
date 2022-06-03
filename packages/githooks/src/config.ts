@@ -1,4 +1,6 @@
 import { loadConfig } from "c12";
+import { readFileSync } from "fs";
+import { parse } from "ini";
 
 // https://git-scm.com/docs/githooks
 const GithooksArray = [
@@ -62,4 +64,8 @@ export async function loadGithooksConfig(
 
 export function defineGithooksConfig(config: GithooksConfig) {
   return config;
+}
+
+export function loadGitConfig(path = ".git/config") {
+  return parse(readFileSync(path, "utf-8"));
 }

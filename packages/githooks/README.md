@@ -5,7 +5,7 @@
 ![npm license](https://img.shields.io/npm/l/@funish/githooks)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
 
-> Programmatically create git hooks, powered by Funish.
+> Programmatically create git hooks, powered by [Funish](https://funish.net/).
 
 Inspired by [husky](https://github.com/typicode/husky) and with an extremely similar implementation, but modified and supplemented with some possible details.
 
@@ -82,6 +82,10 @@ Options:
   -h, --help     Display this message
   -v, --version  Display version number
 ```
+
+## Related Efforts
+
+- [Husky](https://github.com/typicode/husky)
 
 ## Credits
 

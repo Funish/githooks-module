@@ -2,17 +2,13 @@
   "name": "@funish/githooks-config",
   "version": "0.0.0",
   "description": "Shared githooks configuration, powered by Funish.",
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "private": true,
   "scripts": {
     "prepack": "unbuild"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Funish/hooks-module.git"
+    "url": "git+https://github.com/Funish/githooks-module.git"
   },
   "keywords": [
     "git",
@@ -33,7 +29,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Funish/hooks-module/issues"
+    "url": "https://github.com/Funish/githooks-module/issues"
   },
-  "homepage": "https://github.com/Funish/hooks-module#readme"
+  "homepage": "https://github.com/Funish/githooks-module#readme"
 }

@@ -1,5 +1,4 @@
 import { spawnSync, SpawnSyncReturns } from "child_process";
-import parse from "parse-git-config";
 import consola from "consola";
 import {
   existsSync,
@@ -8,7 +7,8 @@ import {
   renameSync,
   writeFileSync,
 } from "fs";
-import { GithooksName, loadGithooksConfig } from "./config";
+import type { GithooksName } from "./config";
+import { loadGitConfig, loadGithooksConfig } from "./config";
 import { saveScript } from "./script";
 
 const git = (args: string[]): SpawnSyncReturns<Buffer> =>
@@ -21,6 +21,9 @@ export async function githooksInstall(
   const config = await loadGithooksConfig();
   const hooksPath =
     path || config.scripts ? ".git/hooks" : config.path || ".githooks";
+
+  // Create a folder for git hooks.
+  mkdirSync(hooksPath, { recursive: true });
 
   try {
     if (config.scripts) {
@@ -50,9 +53,6 @@ export async function githooksInstall(
           : saveScript(`${isSaveScript}`, `hooks install ${hooksPath}`);
       }
 
-      // Create a folder for git hooks.
-      mkdirSync(hooksPath, { recursive: true });
-
       consola.success(`Git hooks are installed in the ${hooksPath} directory.`);
     }
   } catch (error) {
@@ -60,8 +60,8 @@ export async function githooksInstall(
   }
 }
 
-export async function githooksSetup(hooks: GithooksName, script?: string) {
-  const hooksPath = parse.sync().core.hooksPath || ".git/hooks";
+export function githooksSetup(hooks: GithooksName, script?: string) {
+  const hooksPath = loadGitConfig().core.hooksPath || ".git/hooks";
 
   try {
     if (!hooksPath) {
@@ -98,13 +98,14 @@ export function githooksUninstall() {
   }
 }
 
-export function githooksMigrateFromHusky() {
-  const hooksPath = parse.sync().core.hooksPath;
+export async function githooksMigrateFromHusky() {
+  const config = await loadGithooksConfig();
+  const hooksPath = loadGitConfig().core.hooksPath || config.path;
 
   try {
-    if (!hooksPath) {
+    if (config.scripts) {
       consola.error(
-        `Git hooks are not installed (try running githooks install [dir]).`
+        "There are scripts in the configuration file that conflict with the husky migration process."
       );
     } else if (!existsSync(hooksPath) || readdirSync(hooksPath).length === 0) {
       renameSync(".husky", hooksPath);
