@@ -3,7 +3,7 @@ import consola from "consola";
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
-import { GithooksName } from "./config";
+import type { GithooksName } from "./config";
 import { githooksInstall, githooksSetup, githooksUninstall } from "./githooks";
 import { githooksMigrateFromHusky } from "./githooks";
 

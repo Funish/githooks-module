@@ -60,11 +60,16 @@ export async function githooksInstall(
   }
 }
 
-export function githooksSetup(hooks: GithooksName, script?: string) {
-  const hooksPath = loadGitConfig().core.hooksPath || ".git/hooks";
+export async function githooksSetup(hooks: GithooksName, script?: string) {
+  const config = await loadGithooksConfig();
+  const hooksPath = loadGitConfig().core.hooksPath;
 
   try {
-    if (!hooksPath) {
+    if (config.scripts) {
+      consola.error(
+        "Setup failed, please change the scripts field in the configuration file to replace the setup command."
+      );
+    } else if (!hooksPath) {
       consola.error(
         `Git hooks are not installed (try running githooks install [dir]).`
       );
