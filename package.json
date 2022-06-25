@@ -40,8 +40,8 @@
   },
   "homepage": "https://github.com/Funish/githooks-module#readme",
   "devDependencies": {
-    "@commitlint/cli": "16.3.0",
-    "@commitlint/config-conventional": "16.2.4",
+    "@commitlint/cli": "17.0.3",
+    "@commitlint/config-conventional": "17.0.3",
     "@funish/eslint-config": "0.0.1-1",
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:^0.0.0",
