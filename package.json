@@ -42,7 +42,7 @@
   "devDependencies": {
     "@commitlint/cli": "16.3.0",
     "@commitlint/config-conventional": "16.2.4",
-    "@funish/eslint-config": "0.0.1-1",
+    "@funish/eslint-config": "0.0.2",
     "@funish/githooks": "workspace:*",
     "@funish/githooks-config": "workspace:^0.0.0",
     "@types/node": "17.0.34",
